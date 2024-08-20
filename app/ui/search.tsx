@@ -6,6 +6,7 @@ import {
   usePathname,
   useRouter
  } from 'next/navigation';
+ import { useDebouncedCallback } from 'use-debounce';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   // Step 2a searchParams lets you read the searchParams of the search. this is written second
@@ -15,7 +16,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const { replace } = useRouter();
   
   // Step 1 onClick and handlesearch written is first to test that the search is working. 
-  function handleSearch(term:string){
+  // Step 4 rewrite handleSearch to a DebounchedCallback
+  const handleSearch = useDebouncedCallback((term) => {
+    console.log(`Searching... ${term}`)
     // Step 2b add the searchParams to capture the params
     const params = new URLSearchParams(searchParams);
     if (term) {
@@ -26,7 +29,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     }
     // Step 3b add the replace function to navigate
     replace(`${pathname}?${params.toString()}`);
-  }
+  }, 300);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
