@@ -17,6 +17,7 @@ export default async function InvoicesTable({
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+
           <div className="md:hidden">
             {invoices?.map((invoice) => (
               <div
@@ -25,6 +26,7 @@ export default async function InvoicesTable({
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
+                    {/* Contains the image of the invoice and their name */}
                     <div className="mb-2 flex items-center">
                       <Image
                         src={invoice.image_url}
@@ -35,10 +37,12 @@ export default async function InvoicesTable({
                       />
                       <p>{invoice.name}</p>
                     </div>
+                    {/* invoice email */}
                     <p className="text-sm text-gray-500">{invoice.email}</p>
                   </div>
                   <InvoiceStatus status={invoice.status} />
                 </div>
+                {/* Invoice amount, date, option to update invoice */}
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
                     <p className="text-xl font-medium">
@@ -54,6 +58,7 @@ export default async function InvoicesTable({
               </div>
             ))}
           </div>
+
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
@@ -77,6 +82,7 @@ export default async function InvoicesTable({
                 </th>
               </tr>
             </thead>
+            
             <tbody className="bg-white">
               {invoices?.map((invoice) => (
                 <tr
