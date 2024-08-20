@@ -1,6 +1,7 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
  
 // layout basically will include components that will pop up in other pages in this same folder --> such as the customers page will also include the sidenav bar underneath
+export const experimental_ppr = true;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
