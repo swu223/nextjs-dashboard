@@ -21,6 +21,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     console.log(`Searching... ${term}`)
     // Step 2b add the searchParams to capture the params
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
     if (term) {
       // if the search bar has a term, then we set the search params to the term
       params.set('query', term);
