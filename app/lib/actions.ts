@@ -37,7 +37,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     status:     formData.get('status'),
   });
   // Note that you could do Object.fromEntries() to get all the fields of the form
-  console.log(validatedFields);
+  // console.log(validatedFields);
   //If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
